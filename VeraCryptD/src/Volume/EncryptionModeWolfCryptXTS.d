@@ -8,13 +8,14 @@ class EncryptionModeWolfCryptXTS : EncryptionMode
 
     override void encryptSectors(ubyte[] data, ulong sectorIndex, ulong sectorCount, size_t sectorSize)
     {
-        // stub for XTS encryption
+        // use base class simple XOR implementation
+        super.encryptSectors(data, sectorIndex, sectorCount, sectorSize);
     }
 
     override void decryptSectors(ubyte[] data, ulong sectorIndex, ulong sectorCount, size_t sectorSize)
     {
-        // stub for XTS decryption
+        super.decryptSectors(data, sectorIndex, sectorCount, sectorSize);
     }
 
-    size_t getKeySize() const { return 0; }
+    size_t getKeySize() const { return 32; }
 }
