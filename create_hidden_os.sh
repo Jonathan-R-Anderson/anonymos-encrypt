@@ -1,11 +1,13 @@
-#!/bin/bash
+#!/bin/sh
 # Create a VeraCrypt hidden volume containing the Internet Computer OS ISO.
 # The Internet Computer repository must be checked out adjacent to this one
 # and built before running this script.
 
-set -euo pipefail
+set -e
 
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+SCRIPT_DIR="$(dirname "$0")"
+cd "$SCRIPT_DIR"
+SCRIPT_DIR="$(pwd)"
 IC_DIR="$SCRIPT_DIR/../internetcomputer"
 ISO="$IC_DIR/build/anonymOS.iso"
 OUTER_VOL="$SCRIPT_DIR/anonymOS_outer.hc"
@@ -18,9 +20,15 @@ if [ ! -f "$ISO" ]; then
     exit 1
 fi
 
-read -rsp "Outer volume password: " OUTER_PASS
+printf "Outer volume password: "
+stty -echo
+read -r OUTER_PASS
+stty echo
 echo
-read -rsp "Hidden volume password: " HIDDEN_PASS
+printf "Hidden volume password: "
+stty -echo
+read -r HIDDEN_PASS
+stty echo
 echo
 
 # Create outer volume
