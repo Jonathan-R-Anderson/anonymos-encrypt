@@ -4,17 +4,27 @@ import Volume.VolumePassword;
 
 class VolumeInfo
 {
+    static ulong _counter = 0;
+
+    ulong serialInstanceNumber;
     string mountPoint;
     string path;
 
-    this() {}
+    this()
+    {
+        serialInstanceNumber = ++_counter;
+    }
 
-    void set() {}
+    void set(string mountPoint, string path)
+    {
+        this.mountPoint = mountPoint;
+        this.path = path;
+    }
 }
 
 alias VolumeInfoList = VolumeInfo[];
 
 bool firstVolumeMountedAfterSecond(VolumeInfo a, VolumeInfo b)
 {
-    return false;
+    return a.serialInstanceNumber > b.serialInstanceNumber;
 }
