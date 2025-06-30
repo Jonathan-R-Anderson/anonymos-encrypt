@@ -18,7 +18,7 @@ This repository provides scripts for creating a hidden VeraCrypt volume that con
    make build
    ```
 3. Run the helper script to create the hidden volume and place the ISO inside it:
-   ```bash
+   ```sh
    ../anonymos-encrypt/create_hidden_os.sh
    ```
 4. Mount the resulting volume and boot the ISO if desired:
