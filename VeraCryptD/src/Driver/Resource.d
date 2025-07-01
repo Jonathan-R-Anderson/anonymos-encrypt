@@ -1,0 +1,7 @@
+module Driver.Resource;
+
+enum APS_NO_MFC = 1;
+enum APS_NEXT_RESOURCE_VALUE = 101;
+enum APS_NEXT_COMMAND_VALUE = 40001;
+enum APS_NEXT_CONTROL_VALUE = 1001;
+enum APS_NEXT_SYMED_VALUE = 101;
